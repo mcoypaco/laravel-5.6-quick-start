@@ -63,7 +63,7 @@ class LoginController extends Controller
 
         $authUser = $this->findOrCreateUser($user, $provider);
 
-        return redirect('http://localhost:8080/#/login?token='. $authUser->createToken($provider)->accessToken);
+        return redirect(env('APP_WEB_URL').'/#/login?token='. $authUser->createToken($provider)->accessToken);
     }
 
     /**
