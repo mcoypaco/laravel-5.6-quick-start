@@ -90,6 +90,12 @@ class UserRepository extends Repository implements CanSearch, MustBeUnique
         return response()->json(true);
     }
 
+    /**
+     * Register a new user.
+     * 
+     * @param \Illuminate\Http\Request
+     * @return \Illuminate\Http\Response
+     */
     public function create(Request $request)
     {
         return $this->resource(
