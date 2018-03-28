@@ -13,8 +13,18 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('logout', 'Auth\LogoutController@logout');
+
+Route::group(['prefix' => 'password'], function() {
+    Route::post('reset', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+    Route::post('reset/{token}', 'Auth\ResetPasswordController@reset');
 });
 
-Route::post('logout', 'Auth\LogoutController@logout');
+Route::group(['prefix' => 'user'], function () {
+    Route::post('auth', 'UserController@auth');
+    Route::post('check-duplicate', 'UserController@checkDuplicate');
+    Route::post('check-password', 'UserController@checkPassword');
+    Route::post('change-password', 'UserController@changePassword');
+});
+
+Route::resource('user', 'UserController');
