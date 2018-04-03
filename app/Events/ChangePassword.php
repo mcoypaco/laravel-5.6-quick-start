@@ -16,6 +16,8 @@ class ChangePassword implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public $user;
+
     /**
      * Create a new event instance.
      *
@@ -34,5 +36,15 @@ class ChangePassword implements ShouldBroadcast
     public function broadcastOn()
     {
         return new PrivateChannel('user.'. $this->user->id);
+    }
+
+    /**
+     * The event's broadcast name.
+     *
+     * @return string
+     */
+    public function broadcastAs()
+    {
+        return 'user.change-password';
     }
 }
