@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 */
 
 Route::post('logout', 'Auth\LogoutController@logout');
+route::post('pusher/auth', 'PusherController@auth');
 
 Route::group(['prefix' => 'password'], function() {
     Route::post('reset', 'Auth\ForgotPasswordController@sendResetLinkEmail');
