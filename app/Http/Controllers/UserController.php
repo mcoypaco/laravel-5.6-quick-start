@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests\User\{ Store as StoreUser };
+use App\Http\Requests\User\{ ChangePassword, Store as StoreUser };
 use App\Repositories\UserRepository;
 use App\User;
 
